@@ -1,8 +1,8 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import ProjectCard from "@/components/ProjectCard";
+import { RootState } from "@//redux/store";
+import ProjectCard from "@//components/ProjectCard";
 
 export default function ProjectsPage() {
   const projects = useSelector((state: RootState) => state.projects.list);

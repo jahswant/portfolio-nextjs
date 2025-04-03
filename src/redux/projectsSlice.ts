@@ -21,7 +21,7 @@ const initialState: ProjectsState = {
       description:
         "Une plateforme communautaire pour donner des objets gratuitement aux personnes dans le besoin.",
       technologies: ["React", "TailwindCSS", "Redux"],
-      image: "/images/giveitaway.jpg",
+      image: "/images/giveitaway.png",
     },
     {
       id: uuid(),
