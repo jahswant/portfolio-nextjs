@@ -53,7 +53,7 @@ const initialState: ProjectsState = {
       description:
         "Application de suivi d’entraînement avec historique, plans personnalisés et intégration smartwatch.",
       technologies: ["React Native", "TailwindCSS", "Redux Toolkit"],
-      image: "/images/fittrack.jpg",
+      image: "/images/fittrack.png",
     },
     {
       id: uuid(),
@@ -61,7 +61,7 @@ const initialState: ProjectsState = {
       description:
         "Application de réservation de livres en bibliothèque avec avis et recommandations basées sur l’IA.",
       technologies: ["Angular", "NestJS", "PostgreSQL"],
-      image: "/images/bookify.jpg",
+      image: "/images/bookify.png",
     },
     {
       id: uuid(),
@@ -69,7 +69,7 @@ const initialState: ProjectsState = {
       description:
         "Outil de reconnaissance de texte OCR pour convertir des documents scannés en texte modifiable.",
       technologies: ["Python", "Tesseract", "TailwindCSS"],
-      image: "/images/snapscan.jpg",
+      image: "/images/snapscan.png",
     },
     {
       id: uuid(),
@@ -77,7 +77,7 @@ const initialState: ProjectsState = {
       description:
         "Éditeur de code collaboratif en temps réel avec chat et sauvegarde dans le cloud.",
       technologies: ["Next.js", "Socket.io", "Express"],
-      image: "/images/codetogether.jpg",
+      image: "/images/codetogether.png",
     },
     {
       id: uuid(),
@@ -85,7 +85,7 @@ const initialState: ProjectsState = {
       description:
         "Gestionnaire de tâches minimaliste basé sur la méthode Zen pour rester concentré.",
       technologies: ["React", "Zustand", "Framer Motion"],
-      image: "/images/zentask.jpg",
+      image: "/images/zentask.png",
     },
     {
       id: uuid(),
@@ -93,7 +93,7 @@ const initialState: ProjectsState = {
       description:
         "Journal de voyage numérique avec géolocalisation, photos et récits organisés par itinéraire.",
       technologies: ["Vue", "Firebase", "Leaflet"],
-      image: "/images/travelogue.jpg",
+      image: "/images/travelogue.png",
     },
     {
       id: uuid(),
@@ -101,7 +101,7 @@ const initialState: ProjectsState = {
       description:
         "Tableau de bord pour suivre l’empreinte carbone personnelle et proposer des alternatives écologiques.",
       technologies: ["Next.js", "Chart.js", "Tailwind"],
-      image: "/images/ecodash.jpg",
+      image: "/images/ecodash.png",
     },
     {
       id: uuid(),
@@ -109,7 +109,7 @@ const initialState: ProjectsState = {
       description:
         "Application gamifiée pour l’apprentissage des langues avec mini-jeux, quiz, et IA conversationnelle.",
       technologies: ["React", "Redux", "OpenAI API"],
-      image: "/images/langualearn.jpg",
+      image: "/images/langualearn.png",
     },
   ],
 };
