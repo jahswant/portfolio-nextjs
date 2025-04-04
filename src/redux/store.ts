@@ -1,23 +1,24 @@
-// redux/store.ts
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
 import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // ← utilise localStorage
+import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 
 import projectsReducer from "./projectsSlice";
 import testimonialsReducer from "./testimonialsSlice";
 import authReducer from "./authSlice";
+import skillsReducer from "./skillsSlice";
 
-// Combine les reducers
 const rootReducer = combineReducers({
   projects: projectsReducer,
   testimonials: testimonialsReducer,
   auth: authReducer,
+  skills: skillsReducer, 
 });
 
-// Configuration de persist
+
+
 const persistConfig = {
   key: "root",
   storage,
@@ -25,12 +26,11 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Création du store avec le reducer persistant
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // requis pour redux-persist
+      serializableCheck: false,
     }),
 });
 
