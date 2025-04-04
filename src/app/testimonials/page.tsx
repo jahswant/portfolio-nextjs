@@ -6,6 +6,7 @@ import Link from "next/link";
 
 export default function TestimonialsPage() {
   const testimonials = useSelector((state: RootState) => state.testimonials.list || []);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   return (
     <section className="min-h-screen px-6 py-12 bg-gradient-to-br from-white to-blue-50 dark:from-gray-900 dark:to-gray-950">
@@ -36,12 +37,21 @@ export default function TestimonialsPage() {
         )}
 
         <div className="text-center mt-10">
-          <Link
-            href="/testimonials/new"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-blue-700 transition"
-          >
-            Laisser un témoignage
-          </Link>
+          {user ? (
+            <Link
+              href="/testimonials/new"
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-blue-700 transition"
+            >
+              Laisser un témoignage
+            </Link>
+          ) : (
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              🔒 Connectez-vous pour laisser un témoignage.
+              <Link href="/login" className="text-blue-600 underline ml-1 hover:text-blue-800">
+                Se connecter
+              </Link>
+            </p>
+          )}
         </div>
       </div>
     </section>
