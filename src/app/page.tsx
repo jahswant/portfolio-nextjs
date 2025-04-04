@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
+  const skills = useSelector((state: RootState) => state.skills.list);
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 100);
@@ -16,13 +19,11 @@ export default function Home() {
         visible ? "opacity-100" : "opacity-0"
       } bg-gradient-to-br from-white to-blue-50 dark:from-gray-900 dark:to-gray-950`}
     >
-
       <img
         src="/images/profile.jpg"
         alt="Photo de profil"
         className="w-40 h-40 rounded-full object-cover border-4 border-blue-600 shadow-lg mb-6"
       />
-
 
       <h1 className="text-4xl sm:text-5xl font-bold text-blue-700 dark:text-blue-400 mb-4 leading-tight">
         Salut, moi c’est Jahswant 👋
@@ -34,27 +35,17 @@ export default function Home() {
         Bienvenue sur mon portfolio !
       </p>
 
-
       <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-3">
         Compétences clés :
       </h2>
+
       <ul className="flex flex-wrap justify-center gap-3 text-sm sm:text-base font-medium mb-10">
-        {[
-          "HTML5",
-          "CSS3",
-          "JavaScript",
-          "React",
-          "Next.js",
-          "TailwindCSS",
-          "Redux",
-          "Node.js",
-          "Git/GitHub",
-        ].map((skill) => (
+        {skills.map((skill) => (
           <li
-            key={skill}
+            key={skill.id}
             className="bg-blue-100 text-blue-900 dark:bg-blue-800 dark:text-white px-4 py-1 rounded-full shadow hover:scale-105 transition-transform"
           >
-            {skill}
+            {skill.label}
           </li>
         ))}
       </ul>

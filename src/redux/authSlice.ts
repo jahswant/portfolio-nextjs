@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface User {
   username: string;
   email: string;
+  password: string;
 }
 
 interface AuthState {
@@ -13,11 +14,31 @@ interface AuthState {
 const initialState: AuthState = {
   user: null,
   registeredUsers: [
-    { username: "sophie_dev", email: "sophie.tremblay@example.com" },
-    { username: "lucas_b", email: "lucas.bernard@example.com" },
-    { username: "fatimacode", email: "fatima.diallo@example.com" },
-    { username: "dnkem2025", email: "david.nkem@example.com" },
-    { username: "marie_lf", email: "marie.lefebvre@example.com" },
+    {
+      username: "sophie_dev",
+      email: "sophie.tremblay@example.com",
+      password: "sophie123",
+    },
+    {
+      username: "lucas_b",
+      email: "lucas.bernard@example.com",
+      password: "lucas123",
+    },
+    {
+      username: "fatimacode",
+      email: "fatima.diallo@example.com",
+      password: "fatima123",
+    },
+    {
+      username: "dnkem2025",
+      email: "david.nkem@example.com",
+      password: "david123",
+    },
+    {
+      username: "marie_lf",
+      email: "marie.lefebvre@example.com",
+      password: "marie123",
+    },
   ],
 };
 
@@ -26,14 +47,22 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     register: (state, action: PayloadAction<User>) => {
-      const exists = state.registeredUsers.some(u => u.email === action.payload.email);
+      const exists = state.registeredUsers.some(
+        (u) => u.email === action.payload.email
+      );
       if (!exists) {
         state.registeredUsers.push(action.payload);
       }
     },
-    login: (state, action: PayloadAction<{ email: string }>) => {
-      const user = state.registeredUsers.find(u => u.email === action.payload.email);
-      if (user) state.user = user;
+    login: (state, action: PayloadAction<{ email: string; password: string }>) => {
+      const user = state.registeredUsers.find(
+        (u) =>
+          u.email.trim().toLowerCase() === action.payload.email.trim().toLowerCase() &&
+          u.password === action.payload.password.trim()
+      );
+      if (user) {
+        state.user = user;
+      }
     },
     logout: (state) => {
       state.user = null;
