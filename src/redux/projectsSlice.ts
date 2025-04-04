@@ -29,7 +29,7 @@ const initialState: ProjectsState = {
       description:
         "Application de gestion de classes virtuelles avec forum, quiz, et suivi de progression.",
       technologies: ["Next.js", "TypeScript", "Firebase"],
-      image: "/images/educonnect.jpg",
+      image: "/images/educonnect.png",
     },
     {
       id: uuid(),
@@ -37,7 +37,7 @@ const initialState: ProjectsState = {
       description:
         "Marketplace local pour acheter des produits écoresponsables directement auprès des producteurs.",
       technologies: ["Vue", "Node.js", "MongoDB"],
-      image: "/images/greenmarket.jpg",
+      image: "/images/greenmarket.png",
     },
     {
       id: uuid(),
@@ -45,7 +45,7 @@ const initialState: ProjectsState = {
       description:
         "Générateur de portfolios personnalisés pour développeurs en début de carrière.",
       technologies: ["Next.js", "SCSS", "Supabase"],
-      image: "/images/portfolio-pro.jpg",
+      image: "/images/portfolio-pro.png",
     },
     {
       id: uuid(),
