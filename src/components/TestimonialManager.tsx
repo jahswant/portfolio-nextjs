@@ -8,10 +8,12 @@ import {
   editTestimonial,
   addTestimonial,
 } from "@/redux/testimonialsSlice";
+import { useRouter } from "next/navigation";
 
 export default function TestimonialManager() {
   const testimonials = useSelector((state: RootState) => state.testimonials.list);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [editId, setEditId] = useState<string | null>(null);
   const [edited, setEdited] = useState("");
@@ -58,33 +60,41 @@ export default function TestimonialManager() {
         Gestion des Témoignages
       </h1>
 
-      <div className="mb-8">
+      {/* Boutons alignés horizontalement */}
+      <div className="mb-8 flex flex-col sm:flex-row justify-start gap-4">
+        <button
+          onClick={() => router.push("/dashboard")}
+          className="bg-gray-700 text-white px-6 py-2 rounded-md hover:bg-gray-800 transition"
+        >
+          ← Retour au tableau de bord
+        </button>
+
         <button
           onClick={() => setShowForm(!showForm)}
-          className="mb-4 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+          className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
         >
           {showForm ? "Annuler" : "Ajouter un témoignage"}
         </button>
-
-        {showForm && (
-          <div className="flex flex-col sm:flex-row gap-4">
-            <textarea
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              placeholder="Saisissez un nouveau témoignage..."
-              className="flex-1 p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white resize-none"
-              rows={3}
-            />
-            <button
-              onClick={handleAdd}
-              className="self-start bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
-            >
-              Enregistrer
-            </button>
-          </div>
-        )}
-        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
       </div>
+
+      {showForm && (
+        <div className="flex flex-col sm:flex-row gap-4 mb-4">
+          <textarea
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Saisissez un nouveau témoignage..."
+            className="flex-1 p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white resize-none"
+            rows={3}
+          />
+          <button
+            onClick={handleAdd}
+            className="self-start bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
+          >
+            Enregistrer
+          </button>
+        </div>
+      )}
+      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
 
       <h2 className="text-xl font-semibold mb-4">Témoignages enregistrés</h2>
 
