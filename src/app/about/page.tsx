@@ -38,7 +38,6 @@ export default function About() {
         Je suis profondément motivé par l’idée de <strong>rendre la technologie accessible à tous</strong>. Dès mes débuts dans l’informatique au Cameroun, jusqu'à mes projets à La Cité, j’ai toujours cherché à créer des outils utiles, simples et inclusifs.
       </p>
 
-      {/* Détails */}
       <div className="w-full max-w-3xl mt-8 space-y-10 text-gray-700 dark:text-gray-300">
         <div>
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white mb-2">
