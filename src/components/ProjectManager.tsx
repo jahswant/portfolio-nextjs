@@ -9,10 +9,12 @@ import {
 } from "@/redux/projectsSlice";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
+import { useRouter } from "next/navigation";
 
 export default function ProjectManager() {
   const projects = useSelector((state: RootState) => state.projects.list);
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [showForm, setShowForm] = useState(false);
   const [newTitle, setNewTitle] = useState("");
@@ -89,63 +91,71 @@ export default function ProjectManager() {
         Gestion des Projets
       </h1>
 
-      <div className="mb-8">
+      {/* ✅ Boutons bien alignés */}
+      <div className="mb-8 flex flex-col sm:flex-row justify-start gap-4">
+        <button
+          onClick={() => router.push("/dashboard")}
+          className="bg-gray-700 text-white px-6 py-2 rounded-md hover:bg-gray-800 transition"
+        >
+          ← Retour au tableau de bord
+        </button>
+
         <button
           onClick={() => setShowForm(!showForm)}
-          className="mb-4 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+          className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
         >
           {showForm ? "Annuler" : "Ajouter un nouveau projet"}
         </button>
-
-        {showForm && (
-          <div className="flex flex-col gap-4">
-            <input
-              type="text"
-              placeholder="Titre du projet"
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-              className="p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
-            />
-            {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
-
-            <textarea
-              placeholder="Description du projet"
-              value={newDescription}
-              onChange={(e) => setNewDescription(e.target.value)}
-              className="p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
-              rows={3}
-            />
-            {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
-
-            <input
-              type="text"
-              placeholder="URL de l'image"
-              value={newImage}
-              onChange={(e) => setNewImage(e.target.value)}
-              className="p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
-            />
-            {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
-
-            <input
-              type="text"
-              placeholder="Technologies (séparées par des virgules)"
-              value={newTechnologies}
-              onChange={(e) => setNewTechnologies(e.target.value)}
-              className="p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
-            />
-            {errors.tech && <p className="text-red-500 text-sm">{errors.tech}</p>}
-
-            <button
-              onClick={handleAdd}
-              className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
-            >
-              Enregistrer
-            </button>
-          </div>
-        )}
       </div>
 
-      <h2 className="text-xl font-semibold mb-4">Projets enregistrés</h2>
+      {showForm && (
+        <div className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Titre du projet"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            className="p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
+          />
+          {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
+
+          <textarea
+            placeholder="Description du projet"
+            value={newDescription}
+            onChange={(e) => setNewDescription(e.target.value)}
+            className="p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
+            rows={3}
+          />
+          {errors.description && <p className="text-red-500 text-sm">{errors.description}</p>}
+
+          <input
+            type="text"
+            placeholder="URL de l'image"
+            value={newImage}
+            onChange={(e) => setNewImage(e.target.value)}
+            className="p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
+          />
+          {errors.image && <p className="text-red-500 text-sm">{errors.image}</p>}
+
+          <input
+            type="text"
+            placeholder="Technologies (séparées par des virgules)"
+            value={newTechnologies}
+            onChange={(e) => setNewTechnologies(e.target.value)}
+            className="p-3 rounded bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
+          />
+          {errors.tech && <p className="text-red-500 text-sm">{errors.tech}</p>}
+
+          <button
+            onClick={handleAdd}
+            className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
+          >
+            Enregistrer
+          </button>
+        </div>
+      )}
+
+      <h2 className="text-xl font-semibold mb-4 mt-10">Projets enregistrés</h2>
       <ul className="space-y-6">
         {projects.map((project) => (
           <li
@@ -194,7 +204,9 @@ export default function ProjectManager() {
                   alt={project.title}
                   className="w-full h-48 object-cover rounded-md mb-4"
                 />
-                <h3 className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-2">{project.title}</h3>
+                <h3 className="text-lg font-bold text-blue-700 dark:text-blue-300 mb-2">
+                  {project.title}
+                </h3>
                 <p className="text-gray-800 dark:text-gray-200 mb-2">{project.description}</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   Technologies: {project.technologies.join(", ")}
