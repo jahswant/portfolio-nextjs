@@ -6,12 +6,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/redux/store";
 import { logout } from "@/redux/authSlice";
 
+
 const Navbar = () => {
   const pathname = usePathname();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.auth.user);
-
-  console.log("user = ", user);
 
   const linkClass = (path: string) =>
     `px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-gray-800 ${
@@ -20,6 +19,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    window.location.replace('/');
   };
 
   return (
