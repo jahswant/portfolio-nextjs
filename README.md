@@ -25,4 +25,21 @@ Toutes les captures d’écran importantes sont ajoutées plus bas dans ce docum
 
 ---
 
-**Projet réalisé dans le cadre du cours de Programmation Web Avancée – Collège La Cité**  
+### 📸 Captures d’écran du projet
+
+> Ces captures sont situées dans le dossier `/screenshots`.
+
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084410.png)  
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084539.png)  
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084614.png)  
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084630.png)  
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084645.png)  
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084708.png)  
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084738.png)  
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084756.png)  
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084830.png)  
+![Screenshot](./screenshots/Screenshot%202025-04-05%20084851.png)
+
+---
+
+**Projet réalisé dans le cadre du cours de Programmation Web Avancée – Collège La Cité**
