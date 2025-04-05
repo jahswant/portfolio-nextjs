@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/redux/store";
 import { addTestimonial } from "@/redux/testimonialsSlice";
+import AuthGuard from "@/components/AuthGuard";
 
 export default function NewTestimonialPage() {
   const [name, setName] = useState("");
@@ -25,6 +26,7 @@ export default function NewTestimonialPage() {
   };
 
   return (
+    <AuthGuard>
     <section className="min-h-screen px-6 py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
       <div className="max-w-xl mx-auto">
         <h1 className="text-3xl sm:text-4xl font-bold text-blue-700 dark:text-blue-400 mb-6 text-center">
@@ -75,5 +77,6 @@ export default function NewTestimonialPage() {
         </form>
       </div>
     </section>
+    </AuthGuard>
   );
 }

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Skill {
   id: string;
@@ -27,14 +27,20 @@ const skillsSlice = createSlice({
   name: "skills",
   initialState,
   reducers: {
-    addSkill: (state, action) => {
+    addSkill: (state, action: PayloadAction<string>) => {
       state.list.push({ id: crypto.randomUUID(), label: action.payload });
     },
-    removeSkill: (state, action) => {
+    editSkill: (state, action: PayloadAction<Skill>) => {
+      const index = state.list.findIndex((s) => s.id === action.payload.id);
+      if (index !== -1) {
+        state.list[index] = action.payload;
+      }
+    },
+    deleteSkill: (state, action: PayloadAction<string>) => {
       state.list = state.list.filter((skill) => skill.id !== action.payload);
     },
   },
 });
 
-export const { addSkill, removeSkill } = skillsSlice.actions;
+export const { addSkill, editSkill, deleteSkill } = skillsSlice.actions;
 export default skillsSlice.reducer;
