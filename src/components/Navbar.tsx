@@ -69,7 +69,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden px-4 pb-4">
           <Link href="/" className={linkClass("/")} onClick={() => setMenuOpen(false)}>
